@@ -19,7 +19,6 @@ export interface Login {
 })
 export class AppComponent {
 
-  private v: string;
   form: FormGroup;
   title = 'form-app';
 
@@ -32,6 +31,7 @@ export class AppComponent {
     password3: null
   };
 
+  invalidFormControls = '';
   formVal$: Observable<string>;
 
   constructor(private fb: FormBuilder) {
@@ -51,6 +51,9 @@ export class AppComponent {
       return JSON.stringify(val);
     }));
 
+    this.form.valueChanges.subscribe(val => {
+      this.formModel = val;
+    });
     // this.formVal$
   }
 
@@ -58,7 +61,18 @@ export class AppComponent {
     this.form.patchValue(model);
   }
 
+  onSubmit() {
 
+  }
+
+  validate() {
+    console.log(this.form);
+    alert('form valid: ' + this.form.valid);
+
+    if (this.form.invalid) {
+      this.invalidFormControls = Object.keys(this.form.controls).filter(key => this.form.controls[key].invalid === true).join(',');
+    }
+  }
 
   test(f) {
     console.log(f);

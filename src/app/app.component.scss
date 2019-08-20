@@ -6,11 +6,11 @@
 }
 
 .flexContainer>div {
-  width: 49vw;
+  width: 80vw;
   height: 90wh;
   padding: 20px;
 }
 
-.flexContainer>div:first-child {
-  border-right: 1px solid rgba(0, 0, 0, 0.5);
+.text {
+  overflow-wrap: break-word;
 }

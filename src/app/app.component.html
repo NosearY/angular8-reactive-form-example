@@ -7,40 +7,65 @@
 <div class="flexContainer">
   <div>
     <h3>Reactive Form</h3>
-    <h5>form 1</h5>
-    <form [formGroup]="form" (ngSubmit)="onSubmit()">
-      <app-form1 [appFormGroup]="form"></app-form1>
-      <app-form2 [appFormGroup]="form"> </app-form2>
-      <app-form3 [appFormGroup]="form"></app-form3>
+    <form [formGroup]="form">
+      <ngb-tabset [destroyOnHide]="false">
+        <ngb-tab>
+          <ng-template ngbTabTitle>Form 1</ng-template>
+          <ng-template ngbTabContent>
+            <app-form1 [appFormGroup]="form"></app-form1>
+          </ng-template>
+        </ngb-tab>
+        <ngb-tab>
+          <ng-template ngbTabTitle>Form 2</ng-template>
+          <ng-template ngbTabContent>
+            <app-form2 [appFormGroup]="form"> </app-form2>
+          </ng-template>
+        </ngb-tab>
+        <ngb-tab>
+          <ng-template ngbTabTitle>Form 3</ng-template>
+          <ng-template ngbTabContent>
+            <app-form3 [appFormGroup]="form"></app-form3>
+          </ng-template>
+        </ngb-tab>
+      </ngb-tabset>
     </form>
+    <br>
+    <button type="button" class="btn btn-outline-success" (click)="validate()">Form Validation</button>
+    <br>
+    <br>
+    <br>
     <h6>Form Value</h6>
-    <div>
+    <!-- <div>
       Using observable:
     </div>
     <br>
-    <div>
+    <div class="text">
       {{formVal$ | async}}
     </div>
     <br>
-    <hr>
+    <hr> -->
     <br>
-    <div>
-      Using model
-    </div>
-    <div>
+    <h6>
+      Display using model
+    </h6>
+    <div class="text">
       {{'firstName : ' + formModel?.firstName + ', password: ' + formModel?.password}}
       {{'firstName2 : ' + formModel?.firstName2 + ', password2: ' + formModel?.password2}}
       {{'firstName3 : ' + formModel?.firstName3 + ', password3: ' + formModel?.password3}}
     </div>
-  </div>
-  <div>
-    <h3>Template Driven Form</h3>
-    <form #f="ngForm">
-      Value
-      <input type="text" name="v" [(ngModel)]="v" required />
-      <button (click)="test(f)">Test</button>
-      <h4>{{ 'Value: ' + v }}</h4>
-    </form>
+    <br>
+    <h6>
+      Display using observable:
+    </h6>
+    <br>
+    <div class="text">
+      {{formVal$ | async}}
+    </div>
+    <br>
+    <h6>Invalid form controls</h6>
+    <div class="text">
+      {{invalidFormControls}}
+    </div>
   </div>
 </div>
 <router-outlet></router-outlet>
