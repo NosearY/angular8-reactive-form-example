@@ -1,0 +1,16 @@
+.flexContainer {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}
+
+.flexContainer>div {
+  width: 49vw;
+  height: 90wh;
+  padding: 20px;
+}
+
+.flexContainer>div:first-child {
+  border-right: 1px solid rgba(0, 0, 0, 0.5);
+}
