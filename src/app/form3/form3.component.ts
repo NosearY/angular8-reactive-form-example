@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, ControlContainer } from '@angular/forms';
 
 @Component({
   selector: 'app-form3',
@@ -9,11 +9,16 @@ import { FormGroup } from '@angular/forms';
 export class Form3Component implements OnInit {
 
   @Input()
-  appFormGroup: FormGroup;
+  childGroups: string[] = [];
 
-  constructor() { }
+  constructor(public controlContainer: ControlContainer) {
+
+  }
 
   ngOnInit() {
+    console.log(this.controlContainer.control);
   }
+
+
 
 }

@@ -1,5 +1,4 @@
-<h6>Form 3</h6>
-<form [formGroup]="appFormGroup">
+<ng-container [formGroup]="controlContainer.control">
   <div class="form-group">
     <label>First Name3:</label>
     <input type="text" class="form-control" formControlName="firstName3">
@@ -8,5 +7,9 @@
     <label>Password3:</label>
     <input type="password" class="form-control" formControlName="password3">
   </div>
-  <button type="button" class="btn btn-sm btn-outline-primary">Form Button3</button>
-</form>
+  <!-- <button type="button" class="btn btn-sm btn-outline-primary">Form Button3</button> -->
+  <ng-container *ngIf="childGroups[0]">
+    <app-form1 [formGroupName]="childGroups[0]"></app-form1>
+  </ng-container>
+
+</ng-container>

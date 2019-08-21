@@ -6,11 +6,44 @@
 }
 
 .flexContainer>div {
-  width: 80vw;
+  width: 50vw;
   height: 90wh;
   padding: 20px;
 }
 
 .text {
   overflow-wrap: break-word;
+}
+
+.invalid {
+  color: red;
+}
+
+
+
+pre {
+  outline: 1px solid #ccc;
+  padding: 5px;
+  margin: 5px;
+  min-height: 50px;
+
+  :host ::ng-deep .string {
+    color: green;
+  }
+
+  :host ::ng-deep .number {
+    color: darkorange;
+  }
+
+  :host ::ng-deep .boolean {
+    color: blue;
+  }
+
+  :host ::ng-deep .null {
+    color: magenta;
+  }
+
+  :host ::ng-deep .key {
+    color: red;
+  }
 }

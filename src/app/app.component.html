@@ -8,59 +8,47 @@
   <div>
     <h3>Reactive Form</h3>
     <form [formGroup]="form">
-      <ngb-tabset [destroyOnHide]="false">
+      <ngb-tabset>
         <ngb-tab>
-          <ng-template ngbTabTitle>Form 1</ng-template>
+          <ng-template ngbTabTitle><span
+              [class.invalid]="form.controls.form1.invalid && form.controls.form1.touched">Form 1</span>
+          </ng-template>
           <ng-template ngbTabContent>
-            <app-form1 [appFormGroup]="form"></app-form1>
+            <app-form1 formGroupName="form1"></app-form1>
           </ng-template>
         </ngb-tab>
         <ngb-tab>
-          <ng-template ngbTabTitle>Form 2</ng-template>
+          <ng-template ngbTabTitle><span
+              [class.invalid]="form.controls.form2.invalid  && form.controls.form2.touched">Form 2</span>
+          </ng-template>
           <ng-template ngbTabContent>
-            <app-form2 [appFormGroup]="form"> </app-form2>
+            <app-form2 formGroupName="form2"> </app-form2>
           </ng-template>
         </ngb-tab>
         <ngb-tab>
-          <ng-template ngbTabTitle>Form 3</ng-template>
+          <ng-template ngbTabTitle><span
+              [class.invalid]="form.controls.form3.invalid  && form.controls.form3.touched">Form 3</span>
+          </ng-template>
           <ng-template ngbTabContent>
-            <app-form3 [appFormGroup]="form"></app-form3>
+            <app-form3 formGroupName="form3" [childGroups]="['form31']"></app-form3>
           </ng-template>
         </ngb-tab>
       </ngb-tabset>
     </form>
     <br>
-    <button type="button" class="btn btn-outline-success" (click)="validate()">Form Validation</button>
-    <br>
-    <br>
-    <br>
-    <h6>Form Value</h6>
-    <!-- <div>
-      Using observable:
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <button type="button" class="btn btn-outline-primary" (click)="validate()">Form Validation</button>
+      <button type="button" class="btn btn-outline-danger" (click)="reset()">Reset</button>
     </div>
-    <br>
-    <div class="text">
-      {{formVal$ | async}}
-    </div>
-    <br>
-    <hr> -->
-    <br>
+  </div>
+  <div>
     <h6>
-      Display using model
-    </h6>
-    <div class="text">
-      {{'firstName : ' + formModel?.firstName + ', password: ' + formModel?.password}}
-      {{'firstName2 : ' + formModel?.firstName2 + ', password2: ' + formModel?.password2}}
-      {{'firstName3 : ' + formModel?.firstName3 + ', password3: ' + formModel?.password3}}
-    </div>
-    <br>
-    <h6>
-      Display using observable:
+      Form Value:
     </h6>
     <br>
-    <div class="text">
-      {{formVal$ | async}}
-    </div>
+    <pre class="text" [innerHtml]="formVal$ | async">
+
+    </pre>
     <br>
     <h6>Invalid form controls</h6>
     <div class="text">

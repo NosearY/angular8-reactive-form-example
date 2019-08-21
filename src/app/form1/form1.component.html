@@ -1,12 +1,14 @@
-<h6>Form 1</h6>
-<form [formGroup]="appFormGroup">
+<ng-container [formGroup]="controlContainer.control">
   <div class="form-group">
     <label>First Name:</label>
     <input type="text" class="form-control" formControlName="firstName">
+    <div class="invalid-feedback">
+      Required
+    </div>
   </div>
   <div class="form-group">
     <label>Password:</label>
     <input type="password" class="form-control" formControlName="password">
   </div>
-  <button type="button" class="btn btn-sm btn-outline-primary">Form Button</button>
-</form>
+  <!-- <button type="button" class="btn btn-sm btn-outline-primary">Form Button</button> -->
+</ng-container>
